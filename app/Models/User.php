@@ -21,7 +21,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-    ];
+        'foto',
+        'brevettoAB',
+        'brevettoIstruttore',
+        'brevettoNeonatale',
+        'brevettoBaby',
+        'brevettoFitness',
+        'brevettoSportAcqua',
+        'brevettoNuoto',
+        'coordinatore',
+    ];    
 
     /**
      * The attributes that should be hidden for serialization.
