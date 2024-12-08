@@ -30,8 +30,20 @@ class User extends Authenticatable
         'brevettoSportAcqua',
         'brevettoNuoto',
         'coordinatore',
-    ];    
-
+    ]; 
+    
+    public function shifts()
+    {
+        return $this->hasMany(Shift::class, 'user_id', 'id');
+    }
+    public function poolCoordinated()
+    {
+        return $this->hasOne(Pool::class, 'coordinator', 'id');
+    }
+    public function scopeCoordinators($query)
+    {
+        return $query->where('coordinatore', true);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
