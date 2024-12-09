@@ -10,21 +10,19 @@ class Pool extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nome',
-        'indirizzo',
-        'coordinatore',
+        'name',
+        'address',
+        'coordinator',
         'foto',
     ];
 
-    // Relazione uno-a-uno con il coordinatore (utente)
     public function coordinator()
-{
-    return $this->belongsTo(User::class, 'coordinator', 'id');
-}
+    {
+        return $this->belongsTo(User::class, 'coordinator', 'id');
+    }
 
-    // Relazione uno-a-molti con i turni
     public function shifts()
     {
-        return $this->hasMany(Shift::class, 'pool_id', 'id');
+        return $this->hasMany(Shift::class, 'id_pools', 'id');
     }
 }

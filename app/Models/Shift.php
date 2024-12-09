@@ -10,30 +10,27 @@ class Shift extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'pool_id',
-        'role_id',
-        'date',
-        'start_time',
-        'end_time',
-        'compensation',
+        'id_pools',
+        'name_role',
+        'id_users',
+        'data',
+        'oraInizio',
+        'oraFine',
+        'compenso',
     ];
 
-    // Relazione molti-a-uno con l'utente
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'id_users', 'id');
     }
 
-    // Relazione molti-a-uno con la piscina
     public function pool()
     {
-        return $this->belongsTo(Pool::class, 'pool_id', 'id');
+        return $this->belongsTo(Pool::class, 'id_pools', 'id');
     }
 
-    // Relazione molti-a-uno con il ruolo
     public function role()
     {
-        return $this->belongsTo(Role::class, 'role_id', 'name');
+        return $this->belongsTo(Role::class, 'name_role', 'name');
     }
 }
